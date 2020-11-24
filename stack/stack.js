@@ -16,7 +16,8 @@ Stack.prototype.push = function(data){
     var node = new Node(data);
     node.next = this.top;
     this.top = node;
-    return ++this.count;
+    this.count++;
+    return this.top;
 }
 
 Stack.prototype.pop = function(){
@@ -31,10 +32,10 @@ Stack.prototype.pop = function(){
 }
 
 const testStack = new Stack();
-testStack.push(3);
-console.log(testStack.top);
-testStack.pop();
-testStack.pop();
+console.log(testStack.push(3));
+// console.log(testStack.top);
+console.log(testStack.pop());
+// testStack.pop();
 console.log(testStack.top);
 // testStack.push(5);
 // console.log(testStack.top);

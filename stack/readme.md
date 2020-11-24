@@ -1,5 +1,3 @@
-# dataStructure - Stack
-
 # 스택 자료구조로 구현된 것들
 
 

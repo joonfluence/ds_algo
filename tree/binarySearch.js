@@ -8,7 +8,7 @@ console.log(arr.length);
 
 function binarySearch(arr, firstIndex, lastIndex, targetValue){
 
-    let midIndex =Math.floor((firstIndex+lastIndex)/2);
+    let midIndex = Math.floor((firstIndex+lastIndex)/2);
     let midValue = arr[midIndex];
 
     console.log("midIndex "+midIndex);

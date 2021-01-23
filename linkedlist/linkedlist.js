@@ -1,47 +1,50 @@
-// 초기에 설정해줘야 하는 속성은 무엇인가? 
+// 초기에 설정해줘야 하는 속성은 무엇인가?
 
-function Linkedlist (){
-    this.length = 0;
-    this.head = null;
-    this.tail = null;
+function Linkedlist() {
+  this.length = 0;
+  this.head = null;
+  this.tail = null;
 }
 
-function Node(data){
-    this.next = null;
-    this.data = data;
+function Node(data) {
+  this.next = null;
+  this.data = data;
 }
 
-Linkedlist.prototype.add = function (data){
-    let newNode = new Node(data);
-    this.length++;
-    
-    if(!this.head){
-    // this.head가 null이면 head로 지정해줄 것. 
-        this.head = newNode;
-        this.tail = newNode;
-    }
-    
-    this.tail.next = newNode;
+Linkedlist.prototype.add = function (data) {
+  let newNode = new Node(data);
+  this.length++;
+
+  if (!this.head) {
+    // this.head가 null이면 head로 지정해줄 것.
+    this.head = newNode;
     this.tail = newNode;
-    return newNode.data;
-}
+  }
 
-Linkedlist.prototype.delete = function (){
-    if(!this.head){
-        return false;
-    }
-    var temp = this.head;
+  this.tail.next = newNode;
+  this.tail = newNode;
+  return newNode.data;
+};
 
-    while(temp.next.next !== null){
-        temp = temp.next;
-    }
+Linkedlist.prototype.delete = function () {
+  if (!this.head) {
+    return false;
+  }
+  var temp = this.head;
 
-    console.log("삭제할 것 : "+temp.next.data);
-    temp.next = null;
-    this.tail = temp;
-    this.length--;
-    return this.tail.data;
-}
+  while (temp.next.next !== null) {
+    temp = temp.next;
+  }
+
+  console.log("삭제할 것 : " + temp.next.data);
+  // 삭제하기
+  temp.next = null;
+  // tail 노드 재설정하기
+  this.tail = temp;
+  // length 줄이기
+  this.length--;
+  return this.tail.data;
+};
 
 var list = new Linkedlist();
 console.log(list.add(3));

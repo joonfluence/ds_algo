@@ -30,15 +30,13 @@ Stack.prototype.pop = function () {
     let node = this.top;
     let data = node.data;
     this.top = node.next;
+    this.size--;
     node = null;
     return data;
   }
 };
 
-// ( => 0
-// +, - => 1
-// *, / => 2
-
+// 후입선출 : * / 등 우선순위가 높은 연산자에게 높은 점수를 주어, top에 두어 먼저 꺼낼 수 있도록 한다.
 const getPriority = function (char) {
   switch (char) {
     case "(":
@@ -57,20 +55,26 @@ const getPriority = function (char) {
 const transition = function (stack, s) {
   let res = "";
   for (let i = 0; i < s.length; i++) {
+    // 연산자는 Stack에 넣고 더 우선순위가 높은 연산자를 스택에 넣는다.
     if (s[i] === "+" || s[i] === "-" || s[i] === "*" || s[i] === "/") {
       while (
         stack.top !== null &&
         getPriority(stack.top.data) >= getPriority(s[i])
       ) {
+        // 연산자가 스택의 연산자보다 우선순위가 낮다면, pop한다.
         res += stack.pop();
       }
       stack.push(s[i]);
+      // ( 은 스택에 넣는다.
     } else if (s[i] === "(") {
       stack.push(s[i]);
+      // ) 은 stack에서 )가 나올 때까지 pop한다.
     } else if (s[i] === ")") {
       while (stack.top.data !== "(") {
+        // 스택에서 pop되면서 후위표기법으로 변환된다.
         res += stack.pop();
       }
+      // ( 을 빼는 곳
       stack.pop();
     } else {
       res += s[i];

@@ -63,6 +63,7 @@ const transition = function (stack, s) {
       ) {
         // 연산자가 스택의 연산자보다 우선순위가 낮다면, pop한다.
         res += stack.pop();
+        res += " ";
       }
       stack.push(s[i]);
       // ( 은 스택에 넣는다.
@@ -73,37 +74,68 @@ const transition = function (stack, s) {
       while (stack.top.data !== "(") {
         // 스택에서 pop되면서 후위표기법으로 변환된다.
         res += stack.pop();
+        res += " ";
       }
       // ( 을 빼는 곳
       stack.pop();
     } else {
       res += s[i];
+      res += " ";
     }
   }
   while (stack.top !== null) {
     res += stack.pop();
+    res += " ";
   }
   return res;
 };
 
-/* 
-
-string 값을 반환해준 후, 이를 하나하나 따져볼 것. 
-Array.join() : 배열의 모든 요소를 연결해 하나의 문자열로 만든다.
-
-*/
+function calculate(stack, s, size) {
+  let x, y, result;
+  let temp;
+  for (let i = 0; i < size; i++) {
+    // 피연산자는 stack에 넣고, 배열에서 연산자가 나왔을 경우에 pop한다.
+    if (s[i] === "+" || s[i] === "-" || s[i] === "*" || s[i] === "/") {
+      y = Number(stack.pop());
+      x = Number(stack.pop());
+      switch (s[i]) {
+        case "+":
+          result = x + y;
+          break;
+        case "-":
+          result = x - y;
+          break;
+        case "*":
+          result = x * y;
+          break;
+        case "/":
+          result = x / y;
+          break;
+      }
+      temp = result;
+      console.log(temp);
+      stack.push(temp);
+    } else {
+      stack.push(s[i]);
+    }
+  }
+  stack.pop();
+}
 
 function main() {
-  let testStack = new Stack();
+  let stack = new Stack();
   let a = "( ( 3 + 4 ) * 5 ) - 5 * 7 * 5 - 5 * 10";
-  console.log(transition(testStack, a));
+  let size = 0;
+  let b = [];
+  // 띄어쓰기를 통해, 값을 구분하고 이를 배열의 원소로 할당해준다.
+  b = a.split(" ");
+  let res = transition(stack, b);
+  // 띄어쓰기를 통해, 값을 구분하고 이를 배열의 원소로 할당해준다.
+  b = res.split(" ");
+  for (let i = 0; i < res.length; i++) {
+    size++;
+  }
+  calculate(stack, b, size);
 }
 
 main();
-
-// const element = "3";
-// const array = ["23"];
-// let a = "( ( 3 + 4 ) * 5 ) - 5 * 7 * 5 - 5 * 10";
-// let b = [];
-// console.log(b = a.split(" "));
-// console.log(typeof b.join());

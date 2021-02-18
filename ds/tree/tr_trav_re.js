@@ -39,6 +39,37 @@ Tree.prototype.add = function (data){
     return newNode;
 }
 
+// 삭제할 노드를 찾아서 반환해줌. 
+
+function _find(root, node){
+    
+    if(root.data === node.data){
+        console.log("삭제할 노드를 찾았다!");
+        return root;
+    } 
+    
+    if(root.data < node.data){
+        _find(root.left, node);
+    } else if(root.data < node.data){
+        _find(root.right, node);
+    }
+
+}
+
+Tree.prototype.hasChild = function (node){
+    return (node.left || node.right);
+}
+
+// Tree.prototype.remove = function (node){
+//     var node = _find(this.root, node);
+
+//     if(this.hasChild(node)){
+
+//     } else if(){
+
+//     }
+// }
+
 Tree.prototype.preOrderTraversal = function (root){
 
     if(!root){
@@ -85,6 +116,8 @@ const main = function () {
     testTree.add(4);
     testTree.add(6);
     testTree.add(8);
+
+    console.log("hasChild "+testTree.hasChild(5));
 
     console.log("전위순회 시작합니다!");
     testTree.preOrderTraversal(testTree.getRoot());

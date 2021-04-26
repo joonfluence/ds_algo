@@ -1,6 +1,7 @@
 const arr = [0, 7, 2, 5, 3, 6, 4, 1, 8, 9];
 const n = arr.length;
-let i, j, temp;
+let i = 0,
+  j = 0;
 
 const swap = (arr, idx) => {
   const temp = arr[idx];

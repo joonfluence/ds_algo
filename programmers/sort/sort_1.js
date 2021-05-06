@@ -1,3 +1,5 @@
+// 프로그래머스 고득점 Kit, 기능개발
+
 function solution(progresses, speeds) {
   const PERCENT = 100;
   const temp = [];

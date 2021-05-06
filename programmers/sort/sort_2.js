@@ -1,3 +1,5 @@
+// 프로그래머스 정렬, 가장 큰 수
+
 function solution(numbers) {
   // 문자열로 변경시키기 위한 작업
   var answer = numbers.map((e) => e + "");
@@ -17,3 +19,5 @@ function solution(numbers) {
 
   return answer;
 }
+
+console.log(solution([6, 10, 2]));

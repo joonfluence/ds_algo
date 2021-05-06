@@ -10,20 +10,16 @@ function solution(progresses, speeds) {
     temp.push(remain);
   }
 
-  console.log("temp : ", temp);
   let left = -1;
   let right = 0;
   let count;
 
   while (right < temp.length) {
-    if (left === right) {
-      right++;
-      count = 1;
-    } else {
+    if (left !== right) {
       left++;
-      right = left + 1;
-      count = 1;
     }
+    right++;
+    count = 1;
     while (temp[left] >= temp[right]) {
       if (right === temp.length) {
         break;
@@ -40,10 +36,3 @@ function solution(progresses, speeds) {
 
   return answer;
 }
-
-console.log("solution : ", solution([93, 30, 55], [1, 30, 5]));
-console.log(" ");
-console.log(
-  "solution : ",
-  solution([95, 90, 99, 99, 80, 99], [1, 1, 1, 1, 1, 1])
-);

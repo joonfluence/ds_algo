@@ -3,12 +3,19 @@
 // 	1) undefined인 경우, 함수를 종료한다.
 // 	2) 인자로 3개 이상 전달되면 3번째 값부터는 무시된다.
 
-function addTogether() {
-  const [first, second] = arguments;
-  if (typeof first !== "number") return undefined;
-  if (second === undefined) return (second) => addTogether(first, second);
-  if (typeof second !== "number") return undefined;
-  return first + second;
-}
+const addTogether = function () {
+  const [first, last] = arguments;
 
-addTogether(2, 3);
+  if (typeof first !== "number") return undefined;
+  if (typeof last === "string") return undefined;
+  if (typeof last === "undefined") {
+    return function (last) {
+      return addTogether(first, last);
+    };
+  }
+  if (typeof last !== "number") return undefined;
+
+  return first + last;
+};
+
+console.log(addTogether(5)(7));

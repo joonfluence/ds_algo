@@ -119,13 +119,18 @@ const watchList = [
   },
 ];
 
-function getRating(watchList) {
+function getRating(movieList) {
   // Only change code below this line
 
-  let averageRating = watchList.reduce(
-    (prev, cur) => Number(prev.imdbRating) + Number(cur.imdbRating)
+  const filterdList = movieList.filter(
+    (item) => item.Director === "Christopher Nolan"
   );
-  console.log(`file name [thirteenth.js], line -> 128 >>>>> `, averageRating);
+
+  let averageRating =
+    filterdList.reduce((accu, curr) => {
+      return accu + Number(curr.imdbRating);
+    }, 0) / filterdList.length;
+
   // Only change code above this line
   return averageRating;
 }

@@ -34,7 +34,7 @@ const x = 1;
 
 // ①
 function outer() {
-  const x = 10;
+  let x = 10;
   const inner = function () {
     console.log(++x);
   }; // ②

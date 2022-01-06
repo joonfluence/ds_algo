@@ -1,4 +1,4 @@
-import { TreeNode } from "./preorder";
+import { TreeNode } from "./hk_preorder";
 
 function height(root: TreeNode | null, heightNum: number): number {
   if (root === null) {

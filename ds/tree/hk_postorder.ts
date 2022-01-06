@@ -1,4 +1,4 @@
-import { TreeNode } from "./preorder";
+import { TreeNode } from "./hk_preorder";
 
 function PostOrder(root: TreeNode | null) {
   // 종료조건 : leaf node에 도달했을 경우

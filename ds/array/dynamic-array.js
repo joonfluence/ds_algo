@@ -7,6 +7,7 @@ function dynamicArray(n, queries) {
     arr[i] = [];
   }
 
+  console.log(arr);
   queries.forEach((queryArr) => {
     const idx = (queryArr[1] ^ lastAnswer) % n;
     if (queryArr[0] === 1) {
@@ -18,10 +19,12 @@ function dynamicArray(n, queries) {
   });
   return result;
 }
-dynamicArray(2, [
-  [1, 0, 5],
-  [1, 1, 7],
-  [1, 0, 3],
-  [2, 1, 0],
-  [2, 1, 1],
-]);
+console.log(
+  dynamicArray(2, [
+    [1, 0, 5],
+    [1, 1, 7],
+    [1, 0, 3],
+    [2, 1, 0],
+    [2, 1, 1],
+  ])
+);

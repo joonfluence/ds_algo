@@ -20,4 +20,4 @@ function solution(numbers) {
   return answer;
 }
 
-console.log(solution([6, 10, 2]));
+solution([6, 10, 2]);

@@ -17,10 +17,10 @@ function isEqual(arrOne, arrTwo) {
 
 function solution(participant, completion) {
   var answer = "";
-  const sortedArr = participant.sort();
-  const sortedArrTwo = completion.sort();
+  participant.sort();
+  completion.sort();
 
-  answer = completion[isEqual(sortedArr, sortedArrTwo)];
+  answer = participant[isEqual(participant, completion)];
   return answer;
 }
 
